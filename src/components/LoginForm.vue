@@ -11,17 +11,22 @@ const body = reactive({
   password: ''
 })
 const isShowPass = ref(false)
+const isLoad = ref(false)
 //Methods
 const login = () => {
   if ($v.value.$invalid) return $v.value.$touch()
-  router.push({ name: 'game' })
+  isLoad.value = true
+  setTimeout(() => {
+    isLoad.value = false
+    router.push({ name: 'game' })
+  }, 3000)
 }
 // Validation
 const $v = useVuelidate(rules(), { body })
 </script>
 
 <template>
-  <v-card variant="tonal" width="400" class="pa-5">
+  <v-card variant="tonal" width="400" class="pa-5 transition radius-12">
     <v-card-title primary-title class="text-center">Login</v-card-title>
     <v-row>
       <v-col cols="12" sm="12" md="12">
@@ -44,7 +49,7 @@ const $v = useVuelidate(rules(), { body })
       </v-col>
     </v-row>
     <div class="d-flex justify-end">
-      <v-btn @click="login" color="primary">Login</v-btn>
+      <v-btn @click="login" color="deep-purple" :loading="isLoad" class="btn-custom">Login</v-btn>
     </div>
   </v-card>
 </template>

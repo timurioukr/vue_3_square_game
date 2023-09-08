@@ -21,10 +21,6 @@ const router = createRouter({
     {
       path: '/404',
       name: 'no-found',
-      meta: {
-        public: true,
-        access: 'public'
-      },
       component: () => import('@/views/404.vue')
     }
   ]
