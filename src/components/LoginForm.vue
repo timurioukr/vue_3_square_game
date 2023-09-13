@@ -35,6 +35,7 @@ const $v = useVuelidate(rules(), { body })
           label="Email" 
           placeholder="Enter email" 
           solo
+          class="mb-4"
           :error-messages="$v.body.email.$errors.map(item => item.$message)"
           @blur="$v.body.email.$touch()"></v-text-field>
         <v-text-field 
@@ -49,7 +50,7 @@ const $v = useVuelidate(rules(), { body })
       </v-col>
     </v-row>
     <div class="d-flex justify-end">
-      <v-btn @click="login" color="deep-purple" :loading="isLoad" class="btn-custom">Login</v-btn>
+      <v-btn color="deep-purple" :loading="isLoad" class="btn-custom" @click="login">Login</v-btn>
     </div>
   </v-card>
 </template>

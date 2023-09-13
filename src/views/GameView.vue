@@ -10,12 +10,10 @@ const squares = ref([])
 const initializeSquares = () => {
   squares.value = Array.from({ length: gridSize.SizeY }, () => Array(gridSize.SizeX).fill(true))
 }
-
 const removeSquare = (row, col) => {
   squares.value[row - 1][col - 1] = false
   if (squares.value.every(row => row.every(value => value === false))) clearForm()
 }
-
 const clearForm = () => {
   gridSize.SizeY = ''
   gridSize.SizeX = ''
@@ -31,9 +29,9 @@ const clearForm = () => {
         <v-row>
           <v-col cols="12" sm="12" md="12">
             <v-text-field v-model.number="gridSize.SizeX" label="Size X" placeholder="Enter size X" type="number"
-            solo></v-text-field>
+              solo></v-text-field>
             <v-text-field v-model.number="gridSize.SizeY" label="Size Y" placeholder="Enter size Y" type="number"
-            solo></v-text-field>
+              solo></v-text-field>
           </v-col>
         </v-row>
       </div>
@@ -46,8 +44,8 @@ const clearForm = () => {
       </div>
     </div>
     <div class="d-flex justify-end mt-5">
-      <v-btn @click="clearForm" variant="outlined" color="deep-purple mr-3" class="btn-custom">Clear</v-btn>
-      <v-btn @click="initializeSquares" color="deep-purple" class="btn-custom">Create</v-btn>
+      <v-btn variant="outlined" color="deep-purple mr-3" class="btn-custom" @click="clearForm">Clear</v-btn>
+      <v-btn color="deep-purple" class="btn-custom" @click="initializeSquares">Create</v-btn>
     </div>
   </div>
 </template>
