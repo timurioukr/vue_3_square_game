@@ -1,19 +1,23 @@
 <script setup>
 import { reactive, ref } from 'vue'
+
 // Data
 const gridSize = reactive({
   SizeX: '',
   SizeY: ''
 })
 const squares = ref([])
+
 // Methods
 const initializeSquares = () => {
   squares.value = Array.from({ length: gridSize.SizeY }, () => Array(gridSize.SizeX).fill(true))
 }
+
 const removeSquare = (row, col) => {
   squares.value[row - 1][col - 1] = false
   if (squares.value.every(row => row.every(value => value === false))) clearForm()
 }
+
 const clearForm = () => {
   gridSize.SizeY = ''
   gridSize.SizeX = ''

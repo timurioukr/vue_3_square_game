@@ -5,6 +5,7 @@ import { loginForm as rules } from '@/configs/validationRules'
 import { useRouter } from 'vue-router'
 //
 const router = useRouter()
+
 // Data
 const body = reactive({
   email: '',
@@ -12,6 +13,7 @@ const body = reactive({
 })
 const isShowPass = ref(false)
 const isLoad = ref(false)
+
 //Methods
 const login = () => {
   if ($v.value.$invalid) return $v.value.$touch()
@@ -21,6 +23,7 @@ const login = () => {
     router.push({ name: 'game' })
   }, 3000)
 }
+
 // Validation
 const $v = useVuelidate(rules(), { body })
 </script>
